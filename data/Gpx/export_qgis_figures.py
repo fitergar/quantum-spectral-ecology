@@ -25,6 +25,7 @@ from qgis.core import (
     QgsLayoutItemLabel,
     QgsLayoutItemLegend,
     QgsLayoutItemMap,
+    QgsLayoutItemMapGrid,
     QgsLayoutItemScaleBar,
     QgsLayoutPoint,
     QgsLayoutSize,
@@ -33,11 +34,13 @@ from qgis.core import (
     QgsProject,
     QgsRasterLayer,
     QgsRectangle,
+    QgsLineSymbol,
     QgsSingleSymbolRenderer,
+    QgsTextFormat,
     QgsUnitTypes,
     QgsVectorLayer,
 )
-from qgis.PyQt.QtGui import QFont
+from qgis.PyQt.QtGui import QColor, QFont
 
 # ---------------------------------------------------------------------------
 # CONFIGURATION
@@ -61,6 +64,7 @@ GOOGLE_SATELLITE_URI = (
 EXPORT_DPI = 300
 EXTENT_PADDING = 1.04
 SCALE_SEGMENT_METERS = 100
+COORD_GRID_INTERVAL_METERS = 500
 
 PAGE_WIDTH_MM = 297.0
 PAGE_HEIGHT_MM = 210.0
@@ -110,7 +114,7 @@ FIGURES = (
         layout_name="01 Study grid",
         title="Study grid",
         primary_layer="grid_input",
-        context_layers=("river", "grid_delimiter"),
+        context_layers=("river", "grid_delimiter", "inegi_contours"),
         show_legend=False,
     ),
     FigureSpec(
@@ -158,6 +162,7 @@ EXPECTED_FEATURES = {
     "G2GL": 151875,
     "R2GL": 151875,
     "grid_input": 2890,
+    "inegi_contours": 30,
     "smoothed_observations": 636,
     "inverse_potential": 636,
     "driver_prediction": 1942,
@@ -172,6 +177,7 @@ DISPLAY_NAMES = {
     "G2GL": "Green-channel samples",
     "R2GL": "Red-channel samples",
     "grid_input": "Study grid",
+    "inegi_contours": "INEGI contour lines",
     "smoothed_observations": "Smoothed observations",
     "inverse_potential": "Inverse potential",
     "driver_prediction": "Driver prediction",
@@ -231,7 +237,12 @@ def load_layers(project: QgsProject) -> dict[str, QgsMapLayer]:
         project.addMapLayer(layer, False)
         if source_name in result_names:
             group = result_group
-        elif source_name in {"grid_input", "river", "peuthysanota_observation"}:
+        elif source_name in {
+            "grid_input",
+            "inegi_contours",
+            "river",
+            "peuthysanota_observation",
+        }:
             group = context_group
         else:
             group = source_group
@@ -243,6 +254,15 @@ def load_layers(project: QgsProject) -> dict[str, QgsMapLayer]:
         print(f"Verified {source_name}: {count} features")
 
     source_group.setItemVisibilityChecked(False)
+
+    contour_symbol = QgsLineSymbol.createSimple(
+        {
+            "line_color": "235,235,235,210",
+            "line_width": "0.16",
+        }
+    )
+    layers["inegi_contours"].setRenderer(QgsSingleSymbolRenderer(contour_symbol))
+    layers["inegi_contours"].triggerRepaint()
 
     satellite = QgsRasterLayer(
         GOOGLE_SATELLITE_URI,
@@ -291,18 +311,67 @@ def common_extent(grid_layer: QgsVectorLayer) -> QgsRectangle:
     return extent
 
 
-def add_title(layout: QgsPrintLayout, text: str) -> None:
-    title = QgsLayoutItemLabel(layout)
-    title.setId("title")
-    title.setText(text)
-    title.setFont(QFont("Noto Sans", 14))
-    title.attemptMove(QgsLayoutPoint(MAP_X_MM, 3.0, QgsUnitTypes.LayoutMillimeters))
-    title.attemptResize(
-        QgsLayoutSize(MAP_WIDTH_MM, 9.0, QgsUnitTypes.LayoutMillimeters)
-    )
-    title.setFrameEnabled(False)
-    layout.addLayoutItem(title)
+def add_coordinate_grid(map_item: QgsLayoutItemMap) -> None:
+    grid = QgsLayoutItemMapGrid("utm_grid", map_item)
+    grid.setEnabled(True)
 
+    if hasattr(Qgis, "MapGridStyle"):
+        unit = Qgis.MapGridUnit.MapUnit
+        style = Qgis.MapGridStyle.Lines
+        annotation_format = Qgis.MapGridAnnotationFormat.Decimal
+        outside = Qgis.MapGridAnnotationPosition.OutsideMapFrame
+        top = Qgis.MapGridBorderSide.Top
+        right = Qgis.MapGridBorderSide.Right
+        bottom = Qgis.MapGridBorderSide.Bottom
+        left = Qgis.MapGridBorderSide.Left
+        show = Qgis.MapGridComponentVisibility.ShowAll
+        hide = Qgis.MapGridComponentVisibility.HideAll
+        horizontal = Qgis.MapGridAnnotationDirection.Horizontal
+        vertical = Qgis.MapGridAnnotationDirection.Vertical
+    else:
+        unit = QgsLayoutItemMapGrid.MapUnit
+        style = QgsLayoutItemMapGrid.Solid
+        annotation_format = QgsLayoutItemMapGrid.Decimal
+        outside = QgsLayoutItemMapGrid.OutsideMapFrame
+        top = QgsLayoutItemMapGrid.Top
+        right = QgsLayoutItemMapGrid.Right
+        bottom = QgsLayoutItemMapGrid.Bottom
+        left = QgsLayoutItemMapGrid.Left
+        show = QgsLayoutItemMapGrid.ShowAll
+        hide = QgsLayoutItemMapGrid.HideAll
+        horizontal = QgsLayoutItemMapGrid.Horizontal
+        vertical = QgsLayoutItemMapGrid.Vertical
+
+    grid.setUnits(unit)
+    grid.setStyle(style)
+    grid.setIntervalX(COORD_GRID_INTERVAL_METERS)
+    grid.setIntervalY(COORD_GRID_INTERVAL_METERS)
+    grid.setGridLineColor(QColor(255, 255, 255, 115))
+    grid.setGridLineWidth(0.10)
+
+    grid.setAnnotationEnabled(True)
+    grid.setAnnotationFormat(annotation_format)
+    grid.setAnnotationPrecision(0)
+    grid.setAnnotationFrameDistance(1.5)
+
+    grid.setAnnotationDisplay(show, top)
+    grid.setAnnotationDisplay(show, left)
+    grid.setAnnotationDisplay(hide, right)
+    grid.setAnnotationDisplay(hide, bottom)
+    grid.setAnnotationPosition(outside, top)
+    grid.setAnnotationPosition(outside, left)
+    grid.setAnnotationDirection(horizontal, top)
+    grid.setAnnotationDirection(vertical, left)
+
+    text_format = QgsTextFormat()
+    text_format.setFont(QFont("Noto Sans", 7))
+    text_format.setSize(7)
+    text_format.setColor(QColor(30, 30, 30))
+    grid.setAnnotationTextFormat(text_format)
+
+    map_item.grids().addGrid(grid)
+    map_item.updateBoundingRect()
+    map_item.update()
 
 def add_legend(
     layout: QgsPrintLayout,
@@ -399,7 +468,7 @@ def make_layout(
     map_item.setFrameEnabled(True)
     layout.addLayoutItem(map_item)
 
-    add_title(layout, spec.title)
+    add_coordinate_grid(map_item)
     if spec.show_legend:
         add_legend(layout, map_item, primary)
     add_scale_bar(layout, map_item)

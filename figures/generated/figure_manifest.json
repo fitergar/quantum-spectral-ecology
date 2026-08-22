@@ -7,16 +7,16 @@
   },
   "crs": "EPSG:31969",
   "exports": {
-    "figures/generated/01_study_grid.pdf": "89e9a39ea90b22f8777fef987f1f54194f6f388d2e12b0ae4437671302273746",
-    "figures/generated/01_study_grid.png": "2d5ad2cecdd06c00257407868a90fe525b092e21161a671d5d762a01ecfae8c4",
-    "figures/generated/02_smoothed_observations.pdf": "50eb82c29253201550971e3ef94eaaf5ef616eeb54b5bd04c48322eaf857a944",
-    "figures/generated/02_smoothed_observations.png": "4c1f13fa35a1d4d1b76bb96aa283bcae29827f47faf399771e161b079e4dcba8",
-    "figures/generated/03_inverse_potential.pdf": "4349b2de2ff074741aabae6eab2327689940f1d9d4e1f537f6705e76ce385486",
-    "figures/generated/03_inverse_potential.png": "ab88c17d94d1b5c356f60ae160b1ac2639711cb99bea3c1f53d2c3b9fe0da1e0",
-    "figures/generated/04_driver_prediction.pdf": "d2c8c2d1225c0159df4e6dc19c6e80a2b3d951759ecc805653c7c99f0139fbf6",
-    "figures/generated/04_driver_prediction.png": "a0cac1c295b44b75fe52d91dc8bc51d4341f8020df2fe713084c27b33cdac606",
-    "figures/generated/05_grey_prediction.pdf": "e125a3abba5c062595f315146834f587e76d68bac6f2b7f5ce369f9dd517a12f",
-    "figures/generated/05_grey_prediction.png": "6a5f368e1928aba52c8954acc548bfe92f5307724275e503f260cd062a2c107c"
+    "figures/generated/01_study_grid.pdf": "73759beb155c938f6be5531a4905c9d9bac7aea6f4d77e965fa1f563a7a3a636",
+    "figures/generated/01_study_grid.png": "f77b917211fdcb90fe2cc1e36e5016af762ee440c488966e6d2e4b3048785dd5",
+    "figures/generated/02_smoothed_observations.pdf": "24857dd3f945118d4b9cf8032327610c74a670b041587ee032e433c8206febb2",
+    "figures/generated/02_smoothed_observations.png": "be961bb3d2adab7a15c709ae2f12a10726426fd2ce68486e6470330a95a15d9b",
+    "figures/generated/03_inverse_potential.pdf": "67235198a7f766a3e9f2b05f2d8100984e4e3508dcf22ffb13f2d44f2d10e991",
+    "figures/generated/03_inverse_potential.png": "f8a492bec117a005f9b391e11516ce9e6e6586d4b415b60aacae0e71b7e3d674",
+    "figures/generated/04_driver_prediction.pdf": "3dbc63994d83a3ae2cdfcfed83c240bd4b067dbc2cd767d64cf8af5bb16e5606",
+    "figures/generated/04_driver_prediction.png": "799a0f510c3023167a1654975bba1c0ef33b9cec3226894fc3a03b66112323a5",
+    "figures/generated/05_grey_prediction.pdf": "0489738b2d29c61be4b0e2ff58557e6e127327874c0b0f8beed850a4cce110ee",
+    "figures/generated/05_grey_prediction.png": "690521ca53564f08bad17a88c37b85da887af95b87289d246f83f8f1b0863954"
   },
   "extent": {
     "xmax": 328105.0,
@@ -29,7 +29,8 @@
     {
       "context_layers": [
         "river",
-        "grid_delimiter"
+        "grid_delimiter",
+        "inegi_contours"
       ],
       "layout_name": "01 Study grid",
       "primary_layer": "grid_input",
@@ -83,5 +84,5 @@
   "project": "data/Gpx/GL_la_gloria_figures.qgz",
   "qgis_version": "4.2.1-Bel\u00e9m do Par\u00e1",
   "source_geopackage": "data/Gpx/GL_la_gloria_results.gpkg",
-  "source_geopackage_sha256": "a3bb4a12e7adda444723533a3ba598340b296a02fed33922b76121a7eb7aaccd"
+  "source_geopackage_sha256": "9643917d0e72d25cf853b00a4ba49fb2848e5f0e485fca18600b237fe18ecd51"
 }

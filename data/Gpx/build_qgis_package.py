@@ -46,6 +46,7 @@ AUXILIARY_LAYER_COUNTS = {
     "B2GL": 151875,
     "G2GL": 151875,
     "R2GL": 151875,
+    "inegi_contours": 30,
     "peuthysanota_observation": 81,
     "river": 5,
     "river_points": 2659,
