@@ -1,0 +1,74 @@
+{
+  "args": {
+    "conv_print_every": 25,
+    "conv_warn_relres": 1e-10,
+    "cuda": false,
+    "dataset": "test2-grey-radical1",
+    "metrics_csv": "ground_state_metrics_grey.csv",
+    "neigh_file": "VecindadesLinf.pkl",
+    "out_csv": "pred_grey_localavg.csv",
+    "step": 10
+  },
+  "argv": [
+    "predict_gray_local.py",
+    "--dataset",
+    "test2-grey-radical1"
+  ],
+  "completed_at_utc": "2026-08-21T13:21:18.277233Z",
+  "git": {
+    "commit": null,
+    "tracked_files_dirty": null
+  },
+  "inputs": {
+    "driver_model": {
+      "bytes": 1719891,
+      "path": "outputs/test2-grey-radical1/model_driver.pt",
+      "sha256": "cb99bf099c2262948f12aca7ad439b9e6cefcea453eb3b1ace462bb78fec24c9"
+    },
+    "grey_model": {
+      "bytes": 3313973,
+      "path": "outputs/test2-grey-radical1/model_grey.pt",
+      "sha256": "3e8fbdb61f1038128df8d91991d2e49b5789c7f5bcc687071663a7a44970f2d4"
+    },
+    "neighborhoods": {
+      "bytes": 30928075,
+      "path": "outputs/test2-grey-radical1/VecindadesLinf.pkl",
+      "sha256": "1fb06a5a855872cda4cae9d43b61c9d61a0ba56d7b251af041f564b69589fff7"
+    },
+    "prepared": {
+      "bytes": 2052693,
+      "path": "outputs/test2-grey-radical1/prepared.csv",
+      "sha256": "b8fae59e98d26ff3c5b45d18d945fefd061769e99d51b7e473cdff95e7d886d6"
+    }
+  },
+  "outputs": {
+    "ground_state_metrics": {
+      "bytes": 36702,
+      "path": "outputs/test2-grey-radical1/ground_state_metrics_grey.csv",
+      "sha256": "5b5d0141541599f0bcffa12919a782b69514daf5bf2e67a38c44fdaefc69f66f"
+    },
+    "prediction": {
+      "bytes": 132008,
+      "path": "outputs/test2-grey-radical1/pred_grey_localavg.csv",
+      "sha256": "0dc1ee6ee5f2c7ab34163a36c87d83ac2659cbdf828c4cd59433822f168737e4"
+    }
+  },
+  "runtime": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda_available": true,
+    "cudnn_version": 90100,
+    "deterministic_algorithms": true,
+    "device": "cpu",
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "torch": "2.7.1+cu118"
+    },
+    "platform": "Linux-5.10.0-21-amd64-x86_64-with-glibc2.31",
+    "python": "3.13.15",
+    "torch_cuda_version": "11.8"
+  },
+  "stage": "predict_grey_local",
+  "status": "completed"
+}

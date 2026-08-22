@@ -1,0 +1,752 @@
+nohup: ignoring input
+• Output dataset 'test2' -> /home/fedro/qse-final-20260820/data/test2.csv
+• Reading grid: /home/fedro/qse-final-20260820/data/Gridvaluesraw.csv
+• Computing drio and Zdrio...
+• Building grid index...
+• Grid spacing ~ 10 m; RGB L∞ radius=5.0 m
+• Offsets: x_offset=0.47, y_offset=0.25, key_precision=4
+• Reading RGB tiles...
+• Value columns: R='R2', G='G2', B='B2'
+• Assigning subpixels to grid cells...
+[R] WARNING: 13625 subpixels outside radius=5.0 m, 66000 mapped to non-existing centers.
+[G] WARNING: 13625 subpixels outside radius=5.0 m, 66000 mapped to non-existing centers.
+[B] WARNING: 13625 subpixels outside radius=5.0 m, 66000 mapped to non-existing centers.
+• Attaching RGB columns...
+
+[RGB] OK: all 2890 cells share one explicit 25-position layout.
+• Writing dataset CSV: /home/fedro/qse-final-20260820/data/test2.csv
+• Writing subcell layout: /home/fedro/qse-final-20260820/outputs/test2/subcell_layout.csv
+• Done.
+• Reading /home/fedro/qse-final-20260820/data/test2.csv
+• Computing Grey from 25 RGB triplets (gamma=3.0)
+• Smoothing NUMPOINTS on 636 training cells
+• NUMPOINTS_SMOOTH (raw): min=3.285273e-24, max=1.100097e+00
+• NUMPOINTS_SMOOTH (quantized): min=3.285273e-24, max=1.100097e+00
+• Saving /home/fedro/qse-final-20260820/outputs/test2/prepared.csv
+• Done.
+• Device: cuda
+• Training samples: 636
+• Epoch 1/100000 | SE=5.985358e+05 | NRMSE=1.167382e-01
+• Epoch 5000/100000 | SE=5.606342e+05 | NRMSE=1.129816e-01
+• Epoch 10000/100000 | SE=5.606342e+05 | NRMSE=1.129816e-01
+• Epoch 15000/100000 | SE=4.651049e+05 | NRMSE=1.029067e-01
+• Epoch 20000/100000 | SE=3.654093e+05 | NRMSE=9.121322e-02
+• Epoch 25000/100000 | SE=2.872757e+05 | NRMSE=8.087559e-02
+• Epoch 30000/100000 | SE=2.614631e+05 | NRMSE=7.715662e-02
+• Epoch 35000/100000 | SE=2.566022e+05 | NRMSE=7.643604e-02
+• Epoch 40000/100000 | SE=2.564915e+05 | NRMSE=7.641954e-02
+• Epoch 45000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 50000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 55000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 60000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 65000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 70000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 75000/100000 | SE=2.564914e+05 | NRMSE=7.641952e-02
+• Epoch 80000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 85000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 90000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 95000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Epoch 100000/100000 | SE=2.564914e+05 | NRMSE=7.641953e-02
+• Saved model: /home/fedro/qse-final-20260820/outputs/test2/model_driver.pt
+• Saved training predictions: /home/fedro/qse-final-20260820/outputs/test2/train_driver_predictions.csv
+• Saved metrics: /home/fedro/qse-final-20260820/outputs/test2/train_driver_metrics.csv
+• V_target range: [0.000e+00, 2.628e+02] | V_pred range: [4.924e-01, 6.909e+01]
+• Device: cuda
+• Training samples: 636
+• Near-river mask: 330/636 samples
+• Epoch 1/100000 | NRMSE(d<=d0)=1.949689e-01 | NRMSE(all)=7.653495e-02
+• Epoch 5000/100000 | NRMSE(d<=d0)=9.637741e-02 | NRMSE(all)=7.641905e-02
+• Epoch 10000/100000 | NRMSE(d<=d0)=9.499899e-02 | NRMSE(all)=7.641795e-02
+• Epoch 15000/100000 | NRMSE(d<=d0)=9.372143e-02 | NRMSE(all)=7.641695e-02
+• Epoch 20000/100000 | NRMSE(d<=d0)=9.264437e-02 | NRMSE(all)=7.641611e-02
+• Epoch 25000/100000 | NRMSE(d<=d0)=9.162305e-02 | NRMSE(all)=7.641531e-02
+• Epoch 30000/100000 | NRMSE(d<=d0)=9.090919e-02 | NRMSE(all)=7.641476e-02
+• Epoch 35000/100000 | NRMSE(d<=d0)=9.037967e-02 | NRMSE(all)=7.641435e-02
+• Epoch 40000/100000 | NRMSE(d<=d0)=8.996367e-02 | NRMSE(all)=7.641403e-02
+• Epoch 45000/100000 | NRMSE(d<=d0)=8.964810e-02 | NRMSE(all)=7.641379e-02
+• Epoch 50000/100000 | NRMSE(d<=d0)=8.940419e-02 | NRMSE(all)=7.641359e-02
+• Epoch 55000/100000 | NRMSE(d<=d0)=8.919761e-02 | NRMSE(all)=7.641343e-02
+• Epoch 60000/100000 | NRMSE(d<=d0)=8.904567e-02 | NRMSE(all)=7.641331e-02
+• Epoch 65000/100000 | NRMSE(d<=d0)=8.892768e-02 | NRMSE(all)=7.641321e-02
+• Epoch 70000/100000 | NRMSE(d<=d0)=8.883662e-02 | NRMSE(all)=7.641313e-02
+• Epoch 75000/100000 | NRMSE(d<=d0)=8.876800e-02 | NRMSE(all)=7.641307e-02
+• Epoch 80000/100000 | NRMSE(d<=d0)=8.871673e-02 | NRMSE(all)=7.641304e-02
+• Epoch 85000/100000 | NRMSE(d<=d0)=8.868071e-02 | NRMSE(all)=7.641300e-02
+• Epoch 90000/100000 | NRMSE(d<=d0)=8.865479e-02 | NRMSE(all)=7.641296e-02
+• Epoch 95000/100000 | NRMSE(d<=d0)=8.863699e-02 | NRMSE(all)=7.641295e-02
+• Epoch 100000/100000 | NRMSE(d<=d0)=8.862187e-02 | NRMSE(all)=7.641293e-02
+• Saved model: /home/fedro/qse-final-20260820/outputs/test2/model_grey.pt
+• Saved metrics: /home/fedro/qse-final-20260820/outputs/test2/train_grey_metrics.csv
+• Saved training predictions: /home/fedro/qse-final-20260820/outputs/test2/train_grey_predictions.csv
+• Loading /home/fedro/qse-final-20260820/outputs/test2/prepared.csv
+• Building neighborhoods (half_size=60.0 m, drio~=0.0)
+• Saving 314 neighborhoods -> /home/fedro/qse-final-20260820/outputs/test2/VecindadesLinf.pkl
+• Done.
+• Device: cpu
+• Loaded 314 neighborhoods
+• Loaded driver: polynomial degree=5, hidden=[400, 500, 450]
+• [1/314] Neighborhood N=55
+•   ground state: lambda=8.180925e-01 | gap=1.227e-01 | res=8.734e-15 | relres=1.530e-16
+• [2/314] Neighborhood N=50
+• [3/314] Neighborhood N=87
+• [4/314] Neighborhood N=88
+• [5/314] Neighborhood N=83
+• [6/314] Neighborhood N=77
+• [7/314] Neighborhood N=71
+• [8/314] Neighborhood N=65
+• [9/314] Neighborhood N=82
+• [10/314] Neighborhood N=85
+• [11/314] Neighborhood N=87
+• [12/314] Neighborhood N=88
+• [13/314] Neighborhood N=89
+• [14/314] Neighborhood N=91
+• [15/314] Neighborhood N=93
+• [16/314] Neighborhood N=94
+• [17/314] Neighborhood N=95
+• [18/314] Neighborhood N=96
+• [19/314] Neighborhood N=98
+• [20/314] Neighborhood N=70
+• [21/314] Neighborhood N=78
+• [22/314] Neighborhood N=85
+• [23/314] Neighborhood N=91
+• [24/314] Neighborhood N=74
+• [25/314] Neighborhood N=83
+•   ground state: lambda=6.842173e-01 | gap=9.521e-02 | res=1.460e-14 | relres=1.970e-16
+• [26/314] Neighborhood N=77
+• [27/314] Neighborhood N=87
+• [28/314] Neighborhood N=79
+• [29/314] Neighborhood N=90
+• [30/314] Neighborhood N=92
+• [31/314] Neighborhood N=94
+• [32/314] Neighborhood N=105
+• [33/314] Neighborhood N=95
+• [34/314] Neighborhood N=107
+• [35/314] Neighborhood N=94
+• [36/314] Neighborhood N=106
+• [37/314] Neighborhood N=93
+• [38/314] Neighborhood N=105
+• [39/314] Neighborhood N=91
+• [40/314] Neighborhood N=104
+• [41/314] Neighborhood N=89
+• [42/314] Neighborhood N=102
+• [43/314] Neighborhood N=87
+• [44/314] Neighborhood N=100
+• [45/314] Neighborhood N=84
+• [46/314] Neighborhood N=97
+• [47/314] Neighborhood N=81
+• [48/314] Neighborhood N=94
+• [49/314] Neighborhood N=77
+• [50/314] Neighborhood N=90
+•   ground state: lambda=7.287990e-01 | gap=5.158e-02 | res=1.174e-14 | relres=1.560e-16
+• [51/314] Neighborhood N=86
+• [52/314] Neighborhood N=81
+• [53/314] Neighborhood N=94
+• [54/314] Neighborhood N=89
+• [55/314] Neighborhood N=96
+• [56/314] Neighborhood N=90
+• [57/314] Neighborhood N=96
+• [58/314] Neighborhood N=88
+• [59/314] Neighborhood N=101
+• [60/314] Neighborhood N=94
+• [61/314] Neighborhood N=86
+• [62/314] Neighborhood N=99
+• [63/314] Neighborhood N=91
+• [64/314] Neighborhood N=83
+• [65/314] Neighborhood N=96
+• [66/314] Neighborhood N=86
+• [67/314] Neighborhood N=89
+• [68/314] Neighborhood N=78
+• [69/314] Neighborhood N=91
+• [70/314] Neighborhood N=80
+• [71/314] Neighborhood N=81
+• [72/314] Neighborhood N=82
+• [73/314] Neighborhood N=95
+• [74/314] Neighborhood N=95
+• [75/314] Neighborhood N=95
+•   ground state: lambda=7.671723e-01 | gap=7.791e-02 | res=7.039e-15 | relres=1.192e-16
+• [76/314] Neighborhood N=95
+• [77/314] Neighborhood N=95
+• [78/314] Neighborhood N=95
+• [79/314] Neighborhood N=95
+• [80/314] Neighborhood N=95
+• [81/314] Neighborhood N=168
+• [82/314] Neighborhood N=162
+• [83/314] Neighborhood N=97
+• [84/314] Neighborhood N=169
+• [85/314] Neighborhood N=169
+• [86/314] Neighborhood N=169
+• [87/314] Neighborhood N=164
+• [88/314] Neighborhood N=157
+• [89/314] Neighborhood N=99
+• [90/314] Neighborhood N=169
+• [91/314] Neighborhood N=159
+• [92/314] Neighborhood N=90
+• [93/314] Neighborhood N=169
+• [94/314] Neighborhood N=169
+• [95/314] Neighborhood N=169
+• [96/314] Neighborhood N=169
+• [97/314] Neighborhood N=169
+• [98/314] Neighborhood N=169
+• [99/314] Neighborhood N=169
+• [100/314] Neighborhood N=169
+•   ground state: lambda=7.457817e-01 | gap=2.108e-01 | res=1.007e-14 | relres=4.235e-16
+• [101/314] Neighborhood N=169
+• [102/314] Neighborhood N=166
+• [103/314] Neighborhood N=161
+• [104/314] Neighborhood N=95
+• [105/314] Neighborhood N=169
+• [106/314] Neighborhood N=169
+• [107/314] Neighborhood N=169
+• [108/314] Neighborhood N=169
+• [109/314] Neighborhood N=169
+• [110/314] Neighborhood N=169
+• [111/314] Neighborhood N=169
+• [112/314] Neighborhood N=169
+• [113/314] Neighborhood N=167
+• [114/314] Neighborhood N=101
+• [115/314] Neighborhood N=169
+• [116/314] Neighborhood N=169
+• [117/314] Neighborhood N=169
+• [118/314] Neighborhood N=169
+• [119/314] Neighborhood N=169
+• [120/314] Neighborhood N=169
+• [121/314] Neighborhood N=168
+• [122/314] Neighborhood N=107
+• [123/314] Neighborhood N=169
+• [124/314] Neighborhood N=100
+• [125/314] Neighborhood N=169
+•   ground state: lambda=8.186899e-01 | gap=8.621e-02 | res=1.097e-14 | relres=1.921e-16
+• [126/314] Neighborhood N=169
+• [127/314] Neighborhood N=169
+• [128/314] Neighborhood N=169
+• [129/314] Neighborhood N=169
+• [130/314] Neighborhood N=169
+• [131/314] Neighborhood N=169
+• [132/314] Neighborhood N=107
+• [133/314] Neighborhood N=163
+• [134/314] Neighborhood N=168
+• [135/314] Neighborhood N=169
+• [136/314] Neighborhood N=169
+• [137/314] Neighborhood N=169
+• [138/314] Neighborhood N=169
+• [139/314] Neighborhood N=169
+• [140/314] Neighborhood N=169
+• [141/314] Neighborhood N=169
+• [142/314] Neighborhood N=169
+• [143/314] Neighborhood N=169
+• [144/314] Neighborhood N=91
+• [145/314] Neighborhood N=103
+• [146/314] Neighborhood N=115
+• [147/314] Neighborhood N=165
+• [148/314] Neighborhood N=169
+• [149/314] Neighborhood N=169
+• [150/314] Neighborhood N=169
+•   ground state: lambda=8.887730e-01 | gap=6.079e-02 | res=2.110e-14 | relres=9.003e-16
+• [151/314] Neighborhood N=169
+• [152/314] Neighborhood N=169
+• [153/314] Neighborhood N=88
+• [154/314] Neighborhood N=100
+• [155/314] Neighborhood N=161
+• [156/314] Neighborhood N=166
+• [157/314] Neighborhood N=169
+• [158/314] Neighborhood N=169
+• [159/314] Neighborhood N=169
+• [160/314] Neighborhood N=169
+• [161/314] Neighborhood N=169
+• [162/314] Neighborhood N=169
+• [163/314] Neighborhood N=169
+• [164/314] Neighborhood N=86
+• [165/314] Neighborhood N=98
+• [166/314] Neighborhood N=154
+• [167/314] Neighborhood N=159
+• [168/314] Neighborhood N=163
+• [169/314] Neighborhood N=97
+• [170/314] Neighborhood N=150
+• [171/314] Neighborhood N=154
+• [172/314] Neighborhood N=108
+• [173/314] Neighborhood N=145
+• [174/314] Neighborhood N=150
+• [175/314] Neighborhood N=117
+•   ground state: lambda=7.414071e-01 | gap=1.069e-01 | res=4.583e-15 | relres=4.562e-16
+• [176/314] Neighborhood N=125
+• [177/314] Neighborhood N=140
+• [178/314] Neighborhood N=144
+• [179/314] Neighborhood N=125
+• [180/314] Neighborhood N=131
+• [181/314] Neighborhood N=135
+• [182/314] Neighborhood N=138
+• [183/314] Neighborhood N=140
+• [184/314] Neighborhood N=129
+• [185/314] Neighborhood N=124
+• [186/314] Neighborhood N=128
+• [187/314] Neighborhood N=130
+• [188/314] Neighborhood N=108
+• [189/314] Neighborhood N=104
+• [190/314] Neighborhood N=100
+• [191/314] Neighborhood N=98
+• [192/314] Neighborhood N=97
+• [193/314] Neighborhood N=97
+• [194/314] Neighborhood N=99
+• [195/314] Neighborhood N=103
+• [196/314] Neighborhood N=109
+• [197/314] Neighborhood N=115
+• [198/314] Neighborhood N=85
+• [199/314] Neighborhood N=95
+• [200/314] Neighborhood N=102
+•   ground state: lambda=7.726714e-01 | gap=7.686e-02 | res=5.120e-15 | relres=3.817e-16
+• [201/314] Neighborhood N=109
+• [202/314] Neighborhood N=115
+• [203/314] Neighborhood N=120
+• [204/314] Neighborhood N=124
+• [205/314] Neighborhood N=127
+• [206/314] Neighborhood N=105
+• [207/314] Neighborhood N=100
+• [208/314] Neighborhood N=95
+• [209/314] Neighborhood N=103
+• [210/314] Neighborhood N=110
+• [211/314] Neighborhood N=117
+• [212/314] Neighborhood N=86
+• [213/314] Neighborhood N=97
+• [214/314] Neighborhood N=104
+• [215/314] Neighborhood N=98
+• [216/314] Neighborhood N=92
+• [217/314] Neighborhood N=104
+• [218/314] Neighborhood N=111
+• [219/314] Neighborhood N=75
+• [220/314] Neighborhood N=86
+• [221/314] Neighborhood N=100
+• [222/314] Neighborhood N=92
+• [223/314] Neighborhood N=104
+• [224/314] Neighborhood N=111
+• [225/314] Neighborhood N=107
+•   ground state: lambda=7.551813e-01 | gap=8.131e-02 | res=1.661e-14 | relres=6.662e-16
+• [226/314] Neighborhood N=103
+• [227/314] Neighborhood N=100
+• [228/314] Neighborhood N=97
+• [229/314] Neighborhood N=95
+• [230/314] Neighborhood N=93
+• [231/314] Neighborhood N=93
+• [232/314] Neighborhood N=93
+• [233/314] Neighborhood N=95
+• [234/314] Neighborhood N=97
+• [235/314] Neighborhood N=100
+• [236/314] Neighborhood N=103
+• [237/314] Neighborhood N=106
+• [238/314] Neighborhood N=109
+• [239/314] Neighborhood N=74
+• [240/314] Neighborhood N=85
+• [241/314] Neighborhood N=107
+• [242/314] Neighborhood N=98
+• [243/314] Neighborhood N=88
+• [244/314] Neighborhood N=91
+• [245/314] Neighborhood N=102
+• [246/314] Neighborhood N=98
+• [247/314] Neighborhood N=96
+• [248/314] Neighborhood N=100
+• [249/314] Neighborhood N=80
+• [250/314] Neighborhood N=109
+•   ground state: lambda=6.875482e-01 | gap=1.061e-01 | res=4.079e-15 | relres=3.198e-16
+• [251/314] Neighborhood N=102
+• [252/314] Neighborhood N=94
+• [253/314] Neighborhood N=78
+• [254/314] Neighborhood N=84
+• [255/314] Neighborhood N=96
+• [256/314] Neighborhood N=93
+• [257/314] Neighborhood N=89
+• [258/314] Neighborhood N=91
+• [259/314] Neighborhood N=95
+• [260/314] Neighborhood N=69
+• [261/314] Neighborhood N=80
+• [262/314] Neighborhood N=105
+• [263/314] Neighborhood N=97
+• [264/314] Neighborhood N=71
+• [265/314] Neighborhood N=76
+• [266/314] Neighborhood N=85
+• [267/314] Neighborhood N=85
+• [268/314] Neighborhood N=83
+• [269/314] Neighborhood N=82
+• [270/314] Neighborhood N=86
+• [271/314] Neighborhood N=90
+• [272/314] Neighborhood N=93
+• [273/314] Neighborhood N=96
+• [274/314] Neighborhood N=59
+• [275/314] Neighborhood N=51
+•   ground state: lambda=7.457687e-01 | gap=1.603e-01 | res=7.669e-15 | relres=1.286e-16
+• [276/314] Neighborhood N=43
+• [277/314] Neighborhood N=69
+• [278/314] Neighborhood N=99
+• [279/314] Neighborhood N=92
+• [280/314] Neighborhood N=63
+• [281/314] Neighborhood N=67
+• [282/314] Neighborhood N=70
+• [283/314] Neighborhood N=83
+• [284/314] Neighborhood N=85
+• [285/314] Neighborhood N=87
+• [286/314] Neighborhood N=84
+• [287/314] Neighborhood N=79
+• [288/314] Neighborhood N=73
+• [289/314] Neighborhood N=67
+• [290/314] Neighborhood N=60
+• [291/314] Neighborhood N=53
+• [292/314] Neighborhood N=67
+• [293/314] Neighborhood N=86
+• [294/314] Neighborhood N=55
+• [295/314] Neighborhood N=63
+• [296/314] Neighborhood N=104
+• [297/314] Neighborhood N=99
+• [298/314] Neighborhood N=93
+• [299/314] Neighborhood N=87
+• [300/314] Neighborhood N=80
+•   ground state: lambda=6.918536e-01 | gap=4.715e-02 | res=7.440e-15 | relres=5.600e-16
+• [301/314] Neighborhood N=73
+• [302/314] Neighborhood N=50
+• [303/314] Neighborhood N=57
+• [304/314] Neighborhood N=91
+• [305/314] Neighborhood N=95
+• [306/314] Neighborhood N=91
+• [307/314] Neighborhood N=74
+• [308/314] Neighborhood N=67
+• [309/314] Neighborhood N=50
+• [310/314] Neighborhood N=56
+• [311/314] Neighborhood N=62
+• [312/314] Neighborhood N=67
+• [313/314] Neighborhood N=73
+• [314/314] Neighborhood N=79
+• Population calibration scale=4.453990e+02
+• Saved ground-state metrics: /home/fedro/qse-final-20260820/outputs/test2/ground_state_metrics_driver.csv
+• Saved: /home/fedro/qse-final-20260820/outputs/test2/pred_driver_localavg.csv
+• Device: cpu
+• Loaded 314 neighborhoods
+• Loaded driver: polynomial degree=5, hidden=[400, 500, 450]
+• Loaded grey model: polynomial degree=1, hidden=[300, 400, 650], a=0.07, b=5.0
+• Distance gate: d0=30.0 m, k=0.5 1/m -> normalized d0=0.13043478, k=115.00000000
+• [1/314] Neighborhood N=55
+•   ground state: lambda=8.229555e-01 | gap=1.159e-01 | res=8.008e-15 | relres=1.402e-16
+• [2/314] Neighborhood N=50
+• [3/314] Neighborhood N=87
+• [4/314] Neighborhood N=88
+• [5/314] Neighborhood N=83
+• [6/314] Neighborhood N=77
+• [7/314] Neighborhood N=71
+• [8/314] Neighborhood N=65
+• [9/314] Neighborhood N=82
+• [10/314] Neighborhood N=85
+• [11/314] Neighborhood N=87
+• [12/314] Neighborhood N=88
+• [13/314] Neighborhood N=89
+• [14/314] Neighborhood N=91
+• [15/314] Neighborhood N=93
+• [16/314] Neighborhood N=94
+• [17/314] Neighborhood N=95
+• [18/314] Neighborhood N=96
+• [19/314] Neighborhood N=98
+• [20/314] Neighborhood N=70
+• [21/314] Neighborhood N=78
+• [22/314] Neighborhood N=85
+• [23/314] Neighborhood N=91
+• [24/314] Neighborhood N=74
+• [25/314] Neighborhood N=83
+•   ground state: lambda=6.143906e-01 | gap=7.682e-02 | res=1.337e-14 | relres=1.806e-16
+• [26/314] Neighborhood N=77
+• [27/314] Neighborhood N=87
+• [28/314] Neighborhood N=79
+• [29/314] Neighborhood N=90
+• [30/314] Neighborhood N=92
+• [31/314] Neighborhood N=94
+• [32/314] Neighborhood N=105
+• [33/314] Neighborhood N=95
+• [34/314] Neighborhood N=107
+• [35/314] Neighborhood N=94
+• [36/314] Neighborhood N=106
+• [37/314] Neighborhood N=93
+• [38/314] Neighborhood N=105
+• [39/314] Neighborhood N=91
+• [40/314] Neighborhood N=104
+• [41/314] Neighborhood N=89
+• [42/314] Neighborhood N=102
+• [43/314] Neighborhood N=87
+• [44/314] Neighborhood N=100
+• [45/314] Neighborhood N=84
+• [46/314] Neighborhood N=97
+• [47/314] Neighborhood N=81
+• [48/314] Neighborhood N=94
+• [49/314] Neighborhood N=77
+• [50/314] Neighborhood N=90
+•   ground state: lambda=7.065459e-01 | gap=3.084e-02 | res=2.019e-14 | relres=2.684e-16
+• [51/314] Neighborhood N=86
+• [52/314] Neighborhood N=81
+• [53/314] Neighborhood N=94
+• [54/314] Neighborhood N=89
+• [55/314] Neighborhood N=96
+• [56/314] Neighborhood N=90
+• [57/314] Neighborhood N=96
+• [58/314] Neighborhood N=88
+• [59/314] Neighborhood N=101
+• [60/314] Neighborhood N=94
+• [61/314] Neighborhood N=86
+• [62/314] Neighborhood N=99
+• [63/314] Neighborhood N=91
+• [64/314] Neighborhood N=83
+• [65/314] Neighborhood N=96
+• [66/314] Neighborhood N=86
+• [67/314] Neighborhood N=89
+• [68/314] Neighborhood N=78
+• [69/314] Neighborhood N=91
+• [70/314] Neighborhood N=80
+• [71/314] Neighborhood N=81
+• [72/314] Neighborhood N=82
+• [73/314] Neighborhood N=95
+• [74/314] Neighborhood N=95
+• [75/314] Neighborhood N=95
+•   ground state: lambda=7.454656e-01 | gap=9.060e-02 | res=8.858e-15 | relres=1.501e-16
+• [76/314] Neighborhood N=95
+• [77/314] Neighborhood N=95
+• [78/314] Neighborhood N=95
+• [79/314] Neighborhood N=95
+• [80/314] Neighborhood N=95
+• [81/314] Neighborhood N=168
+• [82/314] Neighborhood N=162
+• [83/314] Neighborhood N=97
+• [84/314] Neighborhood N=169
+• [85/314] Neighborhood N=169
+• [86/314] Neighborhood N=169
+• [87/314] Neighborhood N=164
+• [88/314] Neighborhood N=157
+• [89/314] Neighborhood N=99
+• [90/314] Neighborhood N=169
+• [91/314] Neighborhood N=159
+• [92/314] Neighborhood N=90
+• [93/314] Neighborhood N=169
+• [94/314] Neighborhood N=169
+• [95/314] Neighborhood N=169
+• [96/314] Neighborhood N=169
+• [97/314] Neighborhood N=169
+• [98/314] Neighborhood N=169
+• [99/314] Neighborhood N=169
+• [100/314] Neighborhood N=169
+•   ground state: lambda=7.394947e-01 | gap=2.014e-01 | res=1.077e-14 | relres=4.531e-16
+• [101/314] Neighborhood N=169
+• [102/314] Neighborhood N=166
+• [103/314] Neighborhood N=161
+• [104/314] Neighborhood N=95
+• [105/314] Neighborhood N=169
+• [106/314] Neighborhood N=169
+• [107/314] Neighborhood N=169
+• [108/314] Neighborhood N=169
+• [109/314] Neighborhood N=169
+• [110/314] Neighborhood N=169
+• [111/314] Neighborhood N=169
+• [112/314] Neighborhood N=169
+• [113/314] Neighborhood N=167
+• [114/314] Neighborhood N=101
+• [115/314] Neighborhood N=169
+• [116/314] Neighborhood N=169
+• [117/314] Neighborhood N=169
+• [118/314] Neighborhood N=169
+• [119/314] Neighborhood N=169
+• [120/314] Neighborhood N=169
+• [121/314] Neighborhood N=168
+• [122/314] Neighborhood N=107
+• [123/314] Neighborhood N=169
+• [124/314] Neighborhood N=100
+• [125/314] Neighborhood N=169
+•   ground state: lambda=8.704942e-01 | gap=7.935e-02 | res=1.094e-14 | relres=1.914e-16
+• [126/314] Neighborhood N=169
+• [127/314] Neighborhood N=169
+• [128/314] Neighborhood N=169
+• [129/314] Neighborhood N=169
+• [130/314] Neighborhood N=169
+• [131/314] Neighborhood N=169
+• [132/314] Neighborhood N=107
+• [133/314] Neighborhood N=163
+• [134/314] Neighborhood N=168
+• [135/314] Neighborhood N=169
+• [136/314] Neighborhood N=169
+• [137/314] Neighborhood N=169
+• [138/314] Neighborhood N=169
+• [139/314] Neighborhood N=169
+• [140/314] Neighborhood N=169
+• [141/314] Neighborhood N=169
+• [142/314] Neighborhood N=169
+• [143/314] Neighborhood N=169
+• [144/314] Neighborhood N=91
+• [145/314] Neighborhood N=103
+• [146/314] Neighborhood N=115
+• [147/314] Neighborhood N=165
+• [148/314] Neighborhood N=169
+• [149/314] Neighborhood N=169
+• [150/314] Neighborhood N=169
+•   ground state: lambda=8.610712e-01 | gap=1.075e-01 | res=1.575e-14 | relres=6.727e-16
+• [151/314] Neighborhood N=169
+• [152/314] Neighborhood N=169
+• [153/314] Neighborhood N=88
+• [154/314] Neighborhood N=100
+• [155/314] Neighborhood N=161
+• [156/314] Neighborhood N=166
+• [157/314] Neighborhood N=169
+• [158/314] Neighborhood N=169
+• [159/314] Neighborhood N=169
+• [160/314] Neighborhood N=169
+• [161/314] Neighborhood N=169
+• [162/314] Neighborhood N=169
+• [163/314] Neighborhood N=169
+• [164/314] Neighborhood N=86
+• [165/314] Neighborhood N=98
+• [166/314] Neighborhood N=154
+• [167/314] Neighborhood N=159
+• [168/314] Neighborhood N=163
+• [169/314] Neighborhood N=97
+• [170/314] Neighborhood N=150
+• [171/314] Neighborhood N=154
+• [172/314] Neighborhood N=108
+• [173/314] Neighborhood N=145
+• [174/314] Neighborhood N=150
+• [175/314] Neighborhood N=117
+•   ground state: lambda=7.342918e-01 | gap=5.122e-02 | res=4.868e-15 | relres=4.812e-16
+• [176/314] Neighborhood N=125
+• [177/314] Neighborhood N=140
+• [178/314] Neighborhood N=144
+• [179/314] Neighborhood N=125
+• [180/314] Neighborhood N=131
+• [181/314] Neighborhood N=135
+• [182/314] Neighborhood N=138
+• [183/314] Neighborhood N=140
+• [184/314] Neighborhood N=129
+• [185/314] Neighborhood N=124
+• [186/314] Neighborhood N=128
+• [187/314] Neighborhood N=130
+• [188/314] Neighborhood N=108
+• [189/314] Neighborhood N=104
+• [190/314] Neighborhood N=100
+• [191/314] Neighborhood N=98
+• [192/314] Neighborhood N=97
+• [193/314] Neighborhood N=97
+• [194/314] Neighborhood N=99
+• [195/314] Neighborhood N=103
+• [196/314] Neighborhood N=109
+• [197/314] Neighborhood N=115
+• [198/314] Neighborhood N=85
+• [199/314] Neighborhood N=95
+• [200/314] Neighborhood N=102
+•   ground state: lambda=7.978398e-01 | gap=5.579e-02 | res=5.869e-15 | relres=4.360e-16
+• [201/314] Neighborhood N=109
+• [202/314] Neighborhood N=115
+• [203/314] Neighborhood N=120
+• [204/314] Neighborhood N=124
+• [205/314] Neighborhood N=127
+• [206/314] Neighborhood N=105
+• [207/314] Neighborhood N=100
+• [208/314] Neighborhood N=95
+• [209/314] Neighborhood N=103
+• [210/314] Neighborhood N=110
+• [211/314] Neighborhood N=117
+• [212/314] Neighborhood N=86
+• [213/314] Neighborhood N=97
+• [214/314] Neighborhood N=104
+• [215/314] Neighborhood N=98
+• [216/314] Neighborhood N=92
+• [217/314] Neighborhood N=104
+• [218/314] Neighborhood N=111
+• [219/314] Neighborhood N=75
+• [220/314] Neighborhood N=86
+• [221/314] Neighborhood N=100
+• [222/314] Neighborhood N=92
+• [223/314] Neighborhood N=104
+• [224/314] Neighborhood N=111
+• [225/314] Neighborhood N=107
+•   ground state: lambda=6.712467e-01 | gap=1.786e-01 | res=1.623e-14 | relres=6.532e-16
+• [226/314] Neighborhood N=103
+• [227/314] Neighborhood N=100
+• [228/314] Neighborhood N=97
+• [229/314] Neighborhood N=95
+• [230/314] Neighborhood N=93
+• [231/314] Neighborhood N=93
+• [232/314] Neighborhood N=93
+• [233/314] Neighborhood N=95
+• [234/314] Neighborhood N=97
+• [235/314] Neighborhood N=100
+• [236/314] Neighborhood N=103
+• [237/314] Neighborhood N=106
+• [238/314] Neighborhood N=109
+• [239/314] Neighborhood N=74
+• [240/314] Neighborhood N=85
+• [241/314] Neighborhood N=107
+• [242/314] Neighborhood N=98
+• [243/314] Neighborhood N=88
+• [244/314] Neighborhood N=91
+• [245/314] Neighborhood N=102
+• [246/314] Neighborhood N=98
+• [247/314] Neighborhood N=96
+• [248/314] Neighborhood N=100
+• [249/314] Neighborhood N=80
+• [250/314] Neighborhood N=109
+•   ground state: lambda=6.501871e-01 | gap=8.877e-02 | res=5.572e-15 | relres=4.399e-16
+• [251/314] Neighborhood N=102
+• [252/314] Neighborhood N=94
+• [253/314] Neighborhood N=78
+• [254/314] Neighborhood N=84
+• [255/314] Neighborhood N=96
+• [256/314] Neighborhood N=93
+• [257/314] Neighborhood N=89
+• [258/314] Neighborhood N=91
+• [259/314] Neighborhood N=95
+• [260/314] Neighborhood N=69
+• [261/314] Neighborhood N=80
+• [262/314] Neighborhood N=105
+• [263/314] Neighborhood N=97
+• [264/314] Neighborhood N=71
+• [265/314] Neighborhood N=76
+• [266/314] Neighborhood N=85
+• [267/314] Neighborhood N=85
+• [268/314] Neighborhood N=83
+• [269/314] Neighborhood N=82
+• [270/314] Neighborhood N=86
+• [271/314] Neighborhood N=90
+• [272/314] Neighborhood N=93
+• [273/314] Neighborhood N=96
+• [274/314] Neighborhood N=59
+• [275/314] Neighborhood N=51
+•   ground state: lambda=7.091314e-01 | gap=8.812e-02 | res=7.049e-15 | relres=1.183e-16
+• [276/314] Neighborhood N=43
+• [277/314] Neighborhood N=69
+• [278/314] Neighborhood N=99
+• [279/314] Neighborhood N=92
+• [280/314] Neighborhood N=63
+• [281/314] Neighborhood N=67
+• [282/314] Neighborhood N=70
+• [283/314] Neighborhood N=83
+• [284/314] Neighborhood N=85
+• [285/314] Neighborhood N=87
+• [286/314] Neighborhood N=84
+• [287/314] Neighborhood N=79
+• [288/314] Neighborhood N=73
+• [289/314] Neighborhood N=67
+• [290/314] Neighborhood N=60
+• [291/314] Neighborhood N=53
+• [292/314] Neighborhood N=67
+• [293/314] Neighborhood N=86
+• [294/314] Neighborhood N=55
+• [295/314] Neighborhood N=63
+• [296/314] Neighborhood N=104
+• [297/314] Neighborhood N=99
+• [298/314] Neighborhood N=93
+• [299/314] Neighborhood N=87
+• [300/314] Neighborhood N=80
+•   ground state: lambda=6.601703e-01 | gap=3.987e-02 | res=9.120e-15 | relres=6.876e-16
+• [301/314] Neighborhood N=73
+• [302/314] Neighborhood N=50
+• [303/314] Neighborhood N=57
+• [304/314] Neighborhood N=91
+• [305/314] Neighborhood N=95
+• [306/314] Neighborhood N=91
+• [307/314] Neighborhood N=74
+• [308/314] Neighborhood N=67
+• [309/314] Neighborhood N=50
+• [310/314] Neighborhood N=56
+• [311/314] Neighborhood N=62
+• [312/314] Neighborhood N=67
+• [313/314] Neighborhood N=73
+• [314/314] Neighborhood N=79
+• Population calibration scale=4.216067e+02
+• Saved ground-state metrics: /home/fedro/qse-final-20260820/outputs/test2/ground_state_metrics_grey.csv
+• Saved: /home/fedro/qse-final-20260820/outputs/test2/pred_grey_localavg.csv

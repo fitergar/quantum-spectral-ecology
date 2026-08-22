@@ -1,0 +1,77 @@
+{
+  "args": {
+    "cuda": true,
+    "dataset": "test2",
+    "driver_h1": 400,
+    "driver_h2": 500,
+    "driver_h3": 450,
+    "driver_poly": 5,
+    "epochs": 100000,
+    "log_every": 5000,
+    "lr0_inv": 100.0,
+    "metrics_csv": "train_driver_metrics.csv",
+    "seed": 0,
+    "step_size": 1.0
+  },
+  "argv": [
+    "train_driver.py",
+    "--dataset",
+    "test2",
+    "--seed",
+    "0",
+    "--cuda"
+  ],
+  "completed_at_utc": "2026-08-20T15:43:39.720928Z",
+  "git": {
+    "commit": null,
+    "tracked_files_dirty": null
+  },
+  "inputs": {
+    "prepared": {
+      "bytes": 2052693,
+      "path": "outputs/test2/prepared.csv",
+      "sha256": "b8fae59e98d26ff3c5b45d18d945fefd061769e99d51b7e473cdff95e7d886d6"
+    }
+  },
+  "outputs": {
+    "metrics": {
+      "bytes": 2105,
+      "path": "outputs/test2/train_driver_metrics.csv",
+      "sha256": "7ed72cf16b1fd37d90a061975b71b83f342ea6166a354740c7c01750789bcb7d"
+    },
+    "model": {
+      "bytes": 1719891,
+      "path": "outputs/test2/model_driver.pt",
+      "sha256": "cb99bf099c2262948f12aca7ad439b9e6cefcea453eb3b1ace462bb78fec24c9"
+    },
+    "model_metadata": {
+      "bytes": 1033,
+      "path": "outputs/test2/model_driver_meta.json",
+      "sha256": "6c32706e8af1ceb88aa528c31deed1d19e6a3fad5c411108b0982fda59882787"
+    },
+    "training_predictions": {
+      "bytes": 22305,
+      "path": "outputs/test2/train_driver_predictions.csv",
+      "sha256": "e7ab936299a60d495db75dd7016e861dbe2f79b9659dd6a3749d930ab9004303"
+    }
+  },
+  "runtime": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda_available": true,
+    "cudnn_version": 90100,
+    "deterministic_algorithms": true,
+    "device": "cuda",
+    "gpu_name": "NVIDIA RTX A6000",
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "torch": "2.7.1+cu118"
+    },
+    "platform": "Linux-5.10.0-21-amd64-x86_64-with-glibc2.31",
+    "python": "3.13.15",
+    "torch_cuda_version": "11.8"
+  },
+  "stage": "train_driver",
+  "status": "completed"
+}

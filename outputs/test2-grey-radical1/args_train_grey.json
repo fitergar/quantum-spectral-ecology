@@ -1,0 +1,104 @@
+{
+  "args": {
+    "a": 0.0,
+    "b": 2.0,
+    "cuda": true,
+    "d0": 30.0,
+    "dataset": "test2-grey-radical1",
+    "epochs": 100000,
+    "k": 0.5,
+    "log_every": 2500,
+    "lr0_inv": 50.0,
+    "metrics_csv": "train_grey_metrics.csv",
+    "mod_h1": 300,
+    "mod_h2": 400,
+    "mod_h3": 650,
+    "mod_poly": 2,
+    "seed": 0,
+    "step_size": 0.5
+  },
+  "argv": [
+    "train_grey.py",
+    "--dataset",
+    "test2-grey-radical1",
+    "--seed",
+    "0",
+    "--cuda",
+    "--mod-poly",
+    "2",
+    "--a",
+    "0.0",
+    "--b",
+    "2.0",
+    "--d0",
+    "30",
+    "--k",
+    "0.5",
+    "--epochs",
+    "100000",
+    "--lr0-inv",
+    "50",
+    "--step-size",
+    "0.5",
+    "--log-every",
+    "2500"
+  ],
+  "completed_at_utc": "2026-08-21T13:20:27.855990Z",
+  "git": {
+    "commit": null,
+    "tracked_files_dirty": null
+  },
+  "inputs": {
+    "driver_model": {
+      "bytes": 1719891,
+      "path": "outputs/test2-grey-radical1/model_driver.pt",
+      "sha256": "cb99bf099c2262948f12aca7ad439b9e6cefcea453eb3b1ace462bb78fec24c9"
+    },
+    "prepared": {
+      "bytes": 2052693,
+      "path": "outputs/test2-grey-radical1/prepared.csv",
+      "sha256": "b8fae59e98d26ff3c5b45d18d945fefd061769e99d51b7e473cdff95e7d886d6"
+    }
+  },
+  "outputs": {
+    "metrics": {
+      "bytes": 1919,
+      "path": "outputs/test2-grey-radical1/train_grey_metrics.csv",
+      "sha256": "28242c126ba4bc04241c0fc360abdfd5d3d0c35c229cd16acbb30ba677de9023"
+    },
+    "model": {
+      "bytes": 3313973,
+      "path": "outputs/test2-grey-radical1/model_grey.pt",
+      "sha256": "3e8fbdb61f1038128df8d91991d2e49b5789c7f5bcc687071663a7a44970f2d4"
+    },
+    "model_metadata": {
+      "bytes": 2381,
+      "path": "outputs/test2-grey-radical1/model_grey_meta.json",
+      "sha256": "02b3e66b8a5309830ad5195e49b5a5afdeb59f215ce14ec785bbb9a736707938"
+    },
+    "training_predictions": {
+      "bytes": 22214,
+      "path": "outputs/test2-grey-radical1/train_grey_predictions.csv",
+      "sha256": "00c036a8e4394db161726928c17e631f644c673abea69acc7ee61a0ec409e09e"
+    }
+  },
+  "runtime": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda_available": true,
+    "cudnn_version": 90100,
+    "deterministic_algorithms": true,
+    "device": "cuda",
+    "gpu_name": "NVIDIA RTX A6000",
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "torch": "2.7.1+cu118"
+    },
+    "platform": "Linux-5.10.0-21-amd64-x86_64-with-glibc2.31",
+    "python": "3.13.15",
+    "torch_cuda_version": "11.8"
+  },
+  "stage": "train_grey",
+  "status": "completed"
+}
