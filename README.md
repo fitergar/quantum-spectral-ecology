@@ -1,6 +1,6 @@
 # Quantum Spectral Ecological Model — Chimalapas / Ptychohyla euthysanota
 
-This repository accompanies the article: **"Spectral modeling of the stream frog Ptychohyla euthysanota in the Chimalapas montane forest"** and contains the full computational pipeline used to produce the results reported therein.
+This repository accompanies the article: "The Emergence of Quantum Structure in Ecological Modelling: A Spectral Framework with Machine Learning from Satellite Imagery and GIS" and contains the full computational pipeline used to produce the results reported therein.
 
 The purpose of this work is to infer **qualitative spatial structure** of a species distribution in a remote, data-scarce environment, where field observations are extremely sparse and spatially clustered. Rather than attempting precise abundance estimation, the framework focuses on recovering **ecologically credible spatial patterns**, such as strong stream affinity and fine-scale variation along river corridors.
 
@@ -44,7 +44,7 @@ Elevation rasters are reprojected to the project coordinate system (EPSG:31969) 
 
 Satellite imagery is accessed through **QuickMapServices** within QGIS and rasterized onto the same grid used for spatial discretization. The resulting raster layers are aligned to the project coordinate system to ensure spatial consistency.
 
-The repository also includes the organized pre-code spatial snapshot in `data/Gpx/GL_base_complete.gpkg`. It contains the base grid, RGB sampling layers, river geometry and river points, and field observations used to connect the external GIS preparation to the four authoritative CSV inputs. The frozen Python pipeline remains reproducible from those CSV files without QGIS.
+The repository also includes the organized pre-code spatial snapshot in `data/Gpx/GL_base_complete.gpkg`. It contains the base grid, RGB sampling layers, river geometry and river points, field observations, and the INEGI topographic contour layer used to connect the external GIS preparation to the four authoritative CSV inputs. The frozen Python pipeline remains reproducible from those CSV files without QGIS.
 
 ---
 
@@ -52,8 +52,8 @@ The repository also includes the organized pre-code spatial snapshot in `data/Gp
 
 The river network plays a central role in the modeling framework, as _Ptychohyla euthysanota_ is strongly associated with stream environments. From the spatial grid and the river geometry, two key covariates are derived for each cell:
 
-- **distance to the river**, defined as the distance from the grid cell centroid to the nearest river segment,
-- **relative height with respect to the river**, capturing elevation differences between a cell and nearby river locations.
+- distance to the river, measured relative to the nearest river cell,
+- relative height with respect to the river, measured relative to that same river cell.
 
 These quantities encode large-scale ecological constraints—particularly stream affinity and topographic position relative to the river—without imposing them directly in the probabilistic model.
 
@@ -909,6 +909,8 @@ The GIS and figure stages are also frozen and scripted. They use **QGIS** and th
 - `data/Gpx/GL_la_gloria_results.gpkg`: self-contained styled result layers for the study grid, smoothed observations, inverse potential, driver prediction, and selected grey prediction, together with the supporting spatial layers.
 - `data/Gpx/export_qgis_figures.py`: creates the five persistent QGIS layouts, saves `GL_la_gloria_figures.qgz`, and exports the corresponding PNG and PDF figures.
 - `figures/generated/`: frozen exports, `figure_manifest.json`, and `SHA256SUMS`.
+
+The released GIS packaging and figure-generation scripts target QGIS 4.x. The frozen reference figures were generated with QGIS 4.2.1 (Belém do Pará).
 
 Run each script from the QGIS Python Console, replacing the repository path as needed:
 
