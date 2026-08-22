@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Local environments and caches
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# Torch models (large binaries)
+*.pt
+
+# Pickle files (large / machine-specific)
+*.pkl
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+
+# Outputs (optional: keep args & CSVs, ignore models)
+outputs/**/model_*.pt
+
+# Large GIS rasters
+*.tif
+*.tif.aux.xml
+*.tiff
+
+
+
+# QGIS temporary files
+*.gpkg-wal
+*.gpkg-shm
+*.qgz~
