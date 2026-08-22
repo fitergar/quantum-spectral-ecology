@@ -238,7 +238,7 @@ uv sync --frozen
 Run pipeline commands through `uv run`, for example:
 
 ```bash
-uv run python -m src.prepare --dataset test2 --grey-subcells
+uv run python -m src.prepare --dataset la_gloria --grey-subcells
 ```
 ---
 
@@ -253,7 +253,7 @@ The purpose of `src/utils.py` is **consistency**:
 
 #### What `dataset_paths(dataset)` does
 
-The most important function in `src/utils.py` is `dataset_paths(dataset)`. It takes a dataset name (for example `test2`) and returns the canonical locations for:
+The most important function in `src/utils.py` is `dataset_paths(dataset)`. It takes a dataset name (for example `la_gloria`) and returns the canonical locations for:
 
 - the dataset CSV produced by preprocessing:
   - `data/<dataset>.csv`
@@ -412,19 +412,19 @@ Basic run (using defaults in `data/`):
 
 ```bash
 python -m src.preprocess_grid_to_dataset \
-  --dataset test2
+  --dataset la_gloria
 ```
 #### Reproducibility note (exact frozen parameters)
 
 The recommended way to reproduce the run exactly is to use the argument snapshot saved during the final run:
 
-- `outputs/test2/args_preprocess_grid_to_dataset.json`
+- `outputs/la_gloria/args_preprocess_grid_to_dataset.json`
 
-This file contains the complete set of parameters (including alignment offsets, matching precision, and sampling radius) used to generate the frozen dataset `data/test2.csv`.
+This file contains the complete set of parameters (including alignment offsets, matching precision, and sampling radius) used to generate the frozen dataset `data/la_gloria.csv`.
 
 In the README we show a minimal command for convenience, but the JSON above is the authoritative record of the final preprocessing configuration.
 
-(Analogously, the full run is documented by the other `outputs/test2/args_*.json` files for the subsequent stages: preparation, training, and prediction.)
+(Analogously, the full run is documented by the other `outputs/la_gloria/args_*.json` files for the subsequent stages: preparation, training, and prediction.)
 
 ### 2.4 `src/prepare.py` — compute greyscale + define training region + smooth observations
 
@@ -550,7 +550,7 @@ Typical run (recommended):
 
 ```bash
 python -m src.prepare \
-  --dataset test2 \
+  --dataset la_gloria \
   --grey-subcells \
   --smooth step \
   --sigma-meters 8.0 \
@@ -600,13 +600,13 @@ The full set of parameters used for this stage is saved to:
 **Example run (recommended):**
 ```bash
 python -m src.train_driver \
-  --dataset test2 \
+  --dataset la_gloria \
   --seed 0 \
   --cuda
 ```
 
 For the exact configuration used in the frozen reference run, see:
-`outputs/test2/args_train_driver.json`
+`outputs/la_gloria/args_train_driver.json`
 
 ---
 
@@ -632,13 +632,13 @@ The full set of parameters used for this stage is saved to:
 **Example run (recommended):**
 ```bash
 python -m src.train_grey \
-  --dataset test2 \
+  --dataset la_gloria \
   --seed 0 \
   --cuda
 ```
 
 For the exact configuration used in the frozen reference run, see:
-`outputs/test2/args_train_grey.json`
+`outputs/la_gloria/args_train_grey.json`
 
 ---
 
@@ -698,7 +698,7 @@ Saved configuration:
 **Example run:**
 ```bash
 python -m src.neighborhoods \
-  --dataset test2 \
+  --dataset la_gloria \
   --half-size 60.0 \
   --drio-center 0.0 \
   --drio-tol 1e-9
@@ -737,12 +737,12 @@ After all neighborhoods:
 - normalizes the final probability field
 - optionally calibrates to population totals if a training count column is available
 
-Only cells contained in at least one neighborhood are written to the prediction table. Thus the prediction domain is the union of the local river-corridor neighborhoods, not necessarily the entire input grid. In the frozen `test2` run, this domain contains 1,942 of the 2,890 grid cells. Population calibration is computed on the overlap between this prediction domain and cells with a valid smoothed training signal.
+Only cells contained in at least one neighborhood are written to the prediction table. Thus the prediction domain is the union of the local river-corridor neighborhoods, not necessarily the entire input grid. In the frozen `la_gloria` run, this domain contains 1,942 of the 2,890 grid cells. Population calibration is computed on the overlap between this prediction domain and cells with a valid smoothed training signal.
 
 **Example run:**
 ```bash
 python -m src.predict_driver_local \
-  --dataset test2 \
+  --dataset la_gloria \
   --neigh-file VecindadesLinf.pkl \
   --out-csv pred_driver_localavg.csv
 ```
@@ -775,7 +775,7 @@ Important behavior:
 **Example run:**
 ```bash
 python -m src.predict_gray_local \
-  --dataset test2 \
+  --dataset la_gloria \
   --neigh-file VecindadesLinf.pkl \
   --out-csv pred_grey_localavg.csv
 ```
@@ -818,13 +818,13 @@ This repository saves the command-line arguments used in the final run as JSON f
 - `outputs/<dataset>/args_predict_driver_local.json`
 - `outputs/<dataset>/args_predict_grey_local.json`
 
-For the frozen reference run in this repository (`dataset = test2`), the expected execution order is:
+For the frozen reference run in this repository (`dataset = la_gloria`), the expected execution order is:
 
 1) preprocessing → 2) prepare → 3) train driver → 4) train grey → 5) build neighborhoods → 6) predict (driver) → 7) predict (grey)
 
-The frozen artifacts are stored under `outputs/test2/`. `SOURCE_COMMIT` records the clean repository revision containing the numerical source used for the run, the `args_*.json` files record every effective argument and runtime, and `SHA256SUMS` verifies the generated dataset and complete output directory.
+The frozen artifacts are stored under `outputs/la_gloria/`. `SOURCE_COMMIT` records the clean repository revision containing the numerical source used for the run, the `args_*.json` files record every effective argument and runtime, and `SHA256SUMS` verifies the generated dataset and complete output directory.
 
-The complete `test2` run is retained as the frozen baseline. After that run was verified, the greyscale/elevation model alone was retrained with a stronger but still bounded modulation. This selected refinement is stored under `outputs/test2-grey-radical1/`; it reuses the frozen `prepared.csv`, driver checkpoint, driver metadata, and neighborhoods from `test2`. Its own `SOURCE_COMMIT`, argument records, model metadata, diagnostics, predictions, and `SHA256SUMS` preserve the provenance of the selected result. The final GIS package and generated figures combine the target potential and driver prediction from `test2` with the selected grey prediction from `test2-grey-radical1`.
+The `la_gloria` run is the single frozen publication reference. It contains the selected driver and greyscale/elevation models together with their prerequisites, diagnostics, predictions, provenance records, and checksums. The final GIS package and generated figures are built only from this canonical run.
 
 Below is an explicit command sequence that reproduces the full pipeline.
 
@@ -832,109 +832,82 @@ Below is an explicit command sequence that reproduces the full pipeline.
 
 ---
 
-#### 2.6.1 Run everything (example: `test2`)
+#### 2.6.1 Run everything (example: `la_gloria`)
 ```bash
 # (0) Optional sanity check: confirm you are in repo root
 # ls should show: data/ src/ outputs/ README.md
 
 # (1) Build dataset from GIS-exported CSVs (adds drio, Zdrio, RGB subcells)
-python -m src.preprocess_grid_to_dataset --dataset test2
+python -m src.preprocess_grid_to_dataset --dataset la_gloria
 
 # (2) Prepare training table (defines training region internally + greyscale + smoothing)
-python -m src.prepare --dataset test2 --grey-subcells
+python -m src.prepare --dataset la_gloria --grey-subcells
 
 # (3) Train distance-to-river driver model (must run before train_grey)
-python -m src.train_driver --dataset test2 --seed 0 --cuda
+python -m src.train_driver --dataset la_gloria --seed 0 --cuda
 
 # (4) Train greyscale/elevation modulated model (loads + freezes the driver)
-python -m src.train_grey --dataset test2 --seed 0 --cuda
+python -m src.train_grey --dataset la_gloria --seed 0 --cuda
 
 # (5) Build overlapping neighborhoods along the river
-python -m src.neighborhoods --dataset test2
+python -m src.neighborhoods --dataset la_gloria
 
 # (6) Predict with driver-only model (local spectral solve + averaging)
-python -m src.predict_driver_local --dataset test2
+python -m src.predict_driver_local --dataset la_gloria
 
 # (7) Predict with full greyscale/elevation modulated model (local spectral solve + averaging)
-python -m src.predict_gray_local --dataset test2
+python -m src.predict_gray_local --dataset la_gloria
 ```
 
 After a successful run, the main artifacts you should see are:
 
-- `data/test2.csv`
+- `data/la_gloria.csv`
   Output of preprocessing (grid + `drio`, `Zdrio`, RGB subcell columns).
 
-- `outputs/test2/prepared.csv`
+- `outputs/la_gloria/prepared.csv`
   Output of preparation (training mask applied internally, greyscale features, and smoothed counts).
   Note that to get the training region one just has to select rows for which the column with the smoothed
   values is not NAN.
 
-- `outputs/test2/model_driver.pt` + `outputs/test2/model_driver_meta.json`
+- `outputs/la_gloria/model_driver.pt` + `outputs/la_gloria/model_driver_meta.json`
   Trained **driver** network weights + metadata.
 
-- `outputs/test2/model_grey.pt` + `outputs/test2/model_grey_meta.json`
+- `outputs/la_gloria/model_grey.pt` + `outputs/la_gloria/model_grey_meta.json`
   Trained **greyscale/elevation modulated** network weights + metadata.
 
-- `outputs/test2/train_driver_predictions.csv`
+- `outputs/la_gloria/train_driver_predictions.csv`
   Driver training diagnostics table. This file includes the **target potential values** (reconstructed on the training region) and the **driver model’s predicted potential** for the same cells.
 
-- `outputs/test2/train_grey_predictions.csv`
+- `outputs/la_gloria/train_grey_predictions.csv`
   Greyscale-model training diagnostics table. This file includes the same **target potential** and the **full modulated model’s predicted potential** (driver + local correction).
 
-- `outputs/test2/train_driver_metrics.csv`
+- `outputs/la_gloria/train_driver_metrics.csv`
   Metrics logged during driver training.
 
-- `outputs/test2/train_grey_metrics.csv`
+- `outputs/la_gloria/train_grey_metrics.csv`
   Near-river and full-region metrics for the greyscale/elevation model.
 
-- `outputs/test2/VecindadesLinf.pkl`
+- `outputs/la_gloria/VecindadesLinf.pkl`
   Neighborhood list (pickle) used by the local spectral prediction stage.
 
-- `outputs/test2/pred_driver_localavg.csv`
+- `outputs/la_gloria/pred_driver_localavg.csv`
   Final **driver-only** local spectral prediction averaged across neighborhoods.
 
-- `outputs/test2/pred_grey_localavg.csv`
-  Baseline **full model** (driver + greyscale/elevation) local spectral prediction averaged across neighborhoods.
+- `outputs/la_gloria/pred_grey_localavg.csv`
+  Final **full model** (driver + greyscale/elevation) local spectral prediction averaged across neighborhoods.
 
-#### 2.6.2 Selected greyscale refinement
+#### 2.6.2 Frozen canonical result
 
-The selected final greyscale/elevation result was generated from the frozen baseline prerequisites with:
-
-```bash
-mkdir -p outputs/test2-grey-radical1
-cp outputs/test2/prepared.csv outputs/test2-grey-radical1/
-cp outputs/test2/model_driver.pt outputs/test2-grey-radical1/
-cp outputs/test2/model_driver_meta.json outputs/test2-grey-radical1/
-cp outputs/test2/VecindadesLinf.pkl outputs/test2-grey-radical1/
-
-uv run --frozen python -m src.train_grey \
-  --dataset test2-grey-radical1 \
-  --seed 0 \
-  --cuda \
-  --mod-poly 2 \
-  --a 0.0 \
-  --b 2.0 \
-  --d0 30 \
-  --k 0.5 \
-  --epochs 100000 \
-  --lr0-inv 50 \
-  --step-size 0.5 \
-  --log-every 2500
-
-uv run --frozen python -m src.predict_gray_local \
-  --dataset test2-grey-radical1
-```
-
-The authoritative effective configuration is recorded in `outputs/test2-grey-radical1/args_train_grey.json` and `model_grey_meta.json`. The selected final prediction is `outputs/test2-grey-radical1/pred_grey_localavg.csv`.
+The selected greyscale/elevation configuration is already part of the canonical `la_gloria` run; no secondary refinement directory is required. Its authoritative effective configuration is recorded in `outputs/la_gloria/args_train_grey.json` and `outputs/la_gloria/model_grey_meta.json`. The selected final prediction is `outputs/la_gloria/pred_grey_localavg.csv`.
 
 #### Visualizing results in GIS or other tools
 
 The GIS and figure stages are also frozen and scripted. They use **QGIS** and the following files:
 
 - `data/Gpx/GL_base_complete.gpkg`: styled pre-code spatial layers.
-- `data/Gpx/build_qgis_package.py`: joins the frozen CSV results to the base grid and creates `GL_test2_radical1_results.gpkg`.
-- `data/Gpx/GL_test2_radical1_results.gpkg`: self-contained styled result layers for the study grid, smoothed observations, inverse potential, driver prediction, and selected grey prediction, together with the supporting spatial layers.
-- `data/Gpx/export_qgis_figures.py`: creates the five persistent QGIS layouts, saves `GL_test2_radical1_figures.qgz`, and exports the corresponding PNG and PDF figures.
+- `data/Gpx/build_qgis_package.py`: joins the frozen CSV results to the base grid and creates `GL_la_gloria_results.gpkg`.
+- `data/Gpx/GL_la_gloria_results.gpkg`: self-contained styled result layers for the study grid, smoothed observations, inverse potential, driver prediction, and selected grey prediction, together with the supporting spatial layers.
+- `data/Gpx/export_qgis_figures.py`: creates the five persistent QGIS layouts, saves `GL_la_gloria_figures.qgz`, and exports the corresponding PNG and PDF figures.
 - `figures/generated/`: frozen exports, `figure_manifest.json`, and `SHA256SUMS`.
 
 Run each script from the QGIS Python Console, replacing the repository path as needed:

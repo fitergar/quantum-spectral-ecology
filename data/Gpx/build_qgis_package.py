@@ -40,7 +40,7 @@ PROJECT_ROOT = (
 )
 
 BASE_GPKG = PROJECT_ROOT / "data/Gpx/GL_base_complete.gpkg"
-BASE_LAYER = "grid_input"
+BASE_LAYER = "GL_base_grid"
 
 AUXILIARY_LAYER_COUNTS = {
     "B2GL": 151875,
@@ -51,16 +51,16 @@ AUXILIARY_LAYER_COUNTS = {
     "river_points": 2659,
 }
 
-PREPARED_CSV = PROJECT_ROOT / "outputs/test2/prepared.csv"
-POTENTIAL_CSV = PROJECT_ROOT / "outputs/test2/train_driver_predictions.csv"
-DRIVER_CSV = PROJECT_ROOT / "outputs/test2/pred_driver_localavg.csv"
-GREY_CSV = PROJECT_ROOT / "outputs/test2-grey-radical1/pred_grey_localavg.csv"
+PREPARED_CSV = PROJECT_ROOT / "outputs/la_gloria/prepared.csv"
+POTENTIAL_CSV = PROJECT_ROOT / "outputs/la_gloria/train_driver_predictions.csv"
+DRIVER_CSV = PROJECT_ROOT / "outputs/la_gloria/pred_driver_localavg.csv"
+GREY_CSV = PROJECT_ROOT / "outputs/la_gloria/pred_grey_localavg.csv"
 
 PREPARED_STYLE = PROJECT_ROOT / "data/Gpx/styles/prepared_scale.qml"
 PREDICTION_STYLE = PROJECT_ROOT / "data/Gpx/styles/predict_style.qml"
 POTENTIAL_STYLE = PROJECT_ROOT / "data/Gpx/styles/pot_style.qml"
 
-OUTPUT_GPKG = PROJECT_ROOT / "data/Gpx/GL_test2_radical1_results.gpkg"
+OUTPUT_GPKG = PROJECT_ROOT / "data/Gpx/GL_la_gloria_results.gpkg"
 POTENTIAL_CLASSES = 16
 
 # Refuse accidental deletion by default. Change to True only when deliberately

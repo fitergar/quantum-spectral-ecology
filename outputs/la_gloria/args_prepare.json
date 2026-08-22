@@ -1,0 +1,52 @@
+{
+  "args": {
+    "cellsize": 10.0,
+    "dataset": "la_gloria",
+    "gamma": 3.0,
+    "grey_subcells": true,
+    "max_drio": 80.0,
+    "s": 100,
+    "sigma_meters": 8.0,
+    "smooth": "step",
+    "vcol": "NUMPOINTS",
+    "xcol": "X",
+    "ycol": "Y"
+  },
+  "argv": [
+    "prepare.py",
+    "--dataset",
+    "la_gloria",
+    "--grey-subcells"
+  ],
+  "completed_at_utc": "2026-08-22T13:05:06.759539Z",
+  "git": {
+    "commit": null,
+    "tracked_files_dirty": null
+  },
+  "inputs": {
+    "dataset": {
+      "bytes": 1179123,
+      "path": "data/la_gloria.csv",
+      "sha256": "83a9cf776cdb90e392a417b452a253034172c68b6f4791adfb40b2805afc063f"
+    }
+  },
+  "outputs": {
+    "prepared": {
+      "bytes": 2052693,
+      "path": "outputs/la_gloria/prepared.csv",
+      "sha256": "b8fae59e98d26ff3c5b45d18d945fefd061769e99d51b7e473cdff95e7d886d6"
+    }
+  },
+  "runtime": {
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "torch": "2.7.1+cu118"
+    },
+    "platform": "Linux-5.10.0-21-amd64-x86_64-with-glibc2.31",
+    "python": "3.13.15"
+  },
+  "stage": "prepare",
+  "status": "completed"
+}

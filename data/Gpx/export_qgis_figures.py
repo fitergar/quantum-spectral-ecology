@@ -48,8 +48,8 @@ PROJECT_ROOT = (
     if "PROJECT_ROOT" in globals()
     else Path(__file__).resolve().parents[2]
 )
-SOURCE_GPKG = PROJECT_ROOT / "data/Gpx/GL_test2_radical1_results.gpkg"
-OUTPUT_PROJECT = PROJECT_ROOT / "data/Gpx/GL_test2_radical1_figures.qgz"
+SOURCE_GPKG = PROJECT_ROOT / "data/Gpx/GL_la_gloria_results.gpkg"
+OUTPUT_PROJECT = PROJECT_ROOT / "data/Gpx/GL_la_gloria_figures.qgz"
 OUTPUT_DIR = PROJECT_ROOT / "figures/generated"
 
 GOOGLE_SATELLITE_URI = (

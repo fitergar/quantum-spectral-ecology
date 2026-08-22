@@ -1,0 +1,45 @@
+{
+  "args": {
+    "dataset": "la_gloria",
+    "drio_center": 0.0,
+    "drio_tol": 1e-09,
+    "half_size": 60.0,
+    "outfile": "VecindadesLinf.pkl"
+  },
+  "argv": [
+    "neighborhoods.py",
+    "--dataset",
+    "la_gloria"
+  ],
+  "completed_at_utc": "2026-08-22T13:30:02.550745Z",
+  "git": {
+    "commit": null,
+    "tracked_files_dirty": null
+  },
+  "inputs": {
+    "prepared": {
+      "bytes": 2052693,
+      "path": "outputs/la_gloria/prepared.csv",
+      "sha256": "b8fae59e98d26ff3c5b45d18d945fefd061769e99d51b7e473cdff95e7d886d6"
+    }
+  },
+  "outputs": {
+    "neighborhoods": {
+      "bytes": 30928075,
+      "path": "outputs/la_gloria/VecindadesLinf.pkl",
+      "sha256": "1fb06a5a855872cda4cae9d43b61c9d61a0ba56d7b251af041f564b69589fff7"
+    }
+  },
+  "runtime": {
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "torch": "2.7.1+cu118"
+    },
+    "platform": "Linux-5.10.0-21-amd64-x86_64-with-glibc2.31",
+    "python": "3.13.15"
+  },
+  "stage": "neighborhoods",
+  "status": "completed"
+}
